@@ -25,6 +25,24 @@ cp .env.example .env
 python automation.py
 ```
 
+## Sample Output
+
+```text
+2026-09-16 23:36:19,657 [INFO] Fetching weather for Toronto...
+2026-09-16 23:36:19,755 [INFO] Toronto: 16.2°C, wind 10.9 km/h
+2026-09-16 23:36:19,755 [INFO] No Slack webhook configured -- skipping notification, CSV log only.
+```
+
+`weather_log.csv`:
+
+```csv
+timestamp_utc,city,temp_c,wind_kph
+2026-09-17T03:36:19.755784+00:00,Toronto,16.2,10.9
+```
+
+With `SLACK_WEBHOOK_URL` set, the same run also posts: *"Daily weather
+update -- Toronto: 16.2°C, wind 10.9 km/h"*.
+
 ## Adapting for a real client job
 
 - Swap `fetch_weather()` for the client's actual data source (a REST
